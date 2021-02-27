@@ -8,3 +8,14 @@ const port = process.env.PORT || '4000';
 server.listen(port, () => {
     console.log('Server running on http://localhost:' + port);
 });
+
+// Importo le query
+const Records = require("./query");
+
+// GET endpoint
+server.get("/record-denormalizzati/", (req, res) => {
+    Records.findAll()
+    .then(records => {
+        res.status(200).json(records)
+    })
+});
