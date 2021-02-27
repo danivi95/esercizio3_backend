@@ -16,6 +16,16 @@ const Records = require("./query");
 server.get("/record-denormalizzati/", (req, res) => {
     Records.findAll()
     .then(records => {
-        res.status(200).json(records)
+        // Implementazione paginazione
+        const page = parseInt(req.query.page);
+        const offset = parseInt(req.query.offset);
+
+        const startIndex = (page - 1) * offset;
+        const endIndex = page * offset;
+
+        const results = records.slice(startIndex, endIndex);
+
+        // Ritorna i json come risultati
+        res.status(200).json(results);
     })
 });

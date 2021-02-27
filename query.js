@@ -10,7 +10,5 @@ module.exports = {
 }
 
 function findAll() {
-    return db("countries").where({
-        name:"Canada"
-    });
+    return db("records");
 }
