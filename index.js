@@ -12,7 +12,7 @@ server.listen(port, () => {
 // Importo le query
 const Records = require("./query");
 
-// GET endpoint
+// GET endpoint per la lista dei record denormalizzati
 server.get("/record-denormalizzati/", (req, res) => {
     Records.findAll()
     .then(records => {
