@@ -14,6 +14,12 @@ server.listen(port, () => {
     console.log('Server running on http://localhost:' + port);
 });
 
+// GET endpoint per il path iniziale
+server.get('/', (req, res) => {
+    // Mostro la pagina index.html
+    res.sendFile(__dirname + '/index.html');
+});
+
 // GET endpoint per la lista dei record denormalizzati
 server.get("/record-denormalizzati/", (req, res) => {
     Records.findAll()

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Esercizio 3</title>
+  <!--Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #E6E6FA;
+    }
+  </style>
+</head>
+
+<script type="text/javascript">
+  function search() {
+      var page = document.getElementById("page").value;
+      var offset = document.getElementById("offset").value;
+      window.location = "http://localhost:4000/record-denormalizzati?page=" + page + "&offset=" + offset;
+  }
+</script>
+
+<body>
+
+  <h1 class="text-center">Benvenuto!</h1>
+  
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="page">Pagina</label>
+              <input type="number" class="form-control" id="page" placeholder="Inserire la pagina da mostrare">
+            </div>
+            <div class="form-group">
+              <label for="offset">Offset</label>
+              <input type="number" class="form-control" id="offset" placeholder="Inserire l'offset desiderato">
+            </div>
+            <button onclick="search()" type="button" class="btn btn-primary">Mostra JSON</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <p class="card-text">Per effettuare il download in formato CSV della lista dei records denormalizzati clicca qui!</p>
+          <form action="http://localhost:4000/download" method="get">
+            <button type="submit" class="btn btn-success">Download</button>
+          </form>
+        </div>
+      </div>      
+    </div>
+  </div>
+  
+</body>
+
+</html> 
