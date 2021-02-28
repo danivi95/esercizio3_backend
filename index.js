@@ -61,3 +61,20 @@ server.get("/download/", (req, res) => {
         res.status(200).end(csvData);
     })
 });
+
+// GET endpoint per le statistiche aggregate
+server.get("/statistiche", (req, res) => {
+    // Catturo i parametri di query dell'url
+    var queryParameter = req.query;
+    // Estraggo chiave e valore
+    var keys = Object.keys(queryParameter);
+    var values = Object.values(queryParameter);
+    var aggregationType = keys[0];
+    var aggregationValue = values[0];
+    // Passo i parametri utili a filtrare le statistiche
+    Records.statistics(aggregationType, aggregationValue)
+    .then(records => {
+        // Ritorna i json come risultati
+        res.status(200).json(records);
+    })    
+});

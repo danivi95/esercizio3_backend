@@ -18,6 +18,12 @@
       var offset = document.getElementById("offset").value;
       window.location = "http://localhost:4000/record-denormalizzati?page=" + page + "&offset=" + offset;
   }
+
+  function statistics() {
+      var aggregationType = document.getElementById("aggregationType").value;
+      var aggregationValue = document.getElementById("aggregationValue").value;
+      window.location = "http://localhost:4000/statistiche?" + aggregationType + "=" + aggregationValue;
+  }
 </script>
 
 <body>
@@ -30,6 +36,9 @@
   <div class="row">
     <div class="col-md-4">
       <div class="card">
+        <div class="card-header">
+          <h5 class="card-title text-center">Lista record denormalizzati</h5>
+        </div>
         <div class="card-body">
           <form>
             <div class="form-group">
@@ -47,12 +56,34 @@
     </div>
     <div class="col-md-4">
       <div class="card">
+        <div class="card-header">
+          <h5 class="card-title text-center">Statistiche aggregate</h5>
+        </div>
         <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="aggregationType">Aggregation Type</label>
+              <select class="form-control" id="aggregationType">
+                <option value="" disabled selected>---Scegliere un'opzione---</option>
+                <option value="age">Age</option>
+                <option value="education_level_id">Education Level ID</option>
+                <option value="occupation_id">Occupation ID</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="aggregationValue">Aggregation Value</label>
+              <input type="number" class="form-control" id="aggregationValue" placeholder="Inserire il valore desiderato">
+            </div>
+            <button onclick="statistics()" type="button" class="btn btn-info">Mostra JSON</button>
+          </form>
         </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card text-center">
+        <div class="card-header">
+          <h5 class="card-title">Download CSV</h5>
+        </div>
         <div class="card-body">
           <p class="card-text">Per effettuare il download in formato CSV della lista dei records denormalizzati clicca qui!</p>
           <form action="http://localhost:4000/download" method="get">
